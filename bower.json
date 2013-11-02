@@ -1,0 +1,8 @@
+{
+  "name": "tictactoe",
+  "version": "0.0.1",
+  "author": "ButuzGOL",
+  "dependencies": {
+    "jquery": "~2.0.3"
+  }
+}
