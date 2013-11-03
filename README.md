@@ -2,6 +2,8 @@
 
 It is simple multiplayer game written in JavaScript using express and socket.io
 
+[Demo](http://butuzgol-tictactoe.herokuapp.com/)
+
 ## To install game:
 
 1. Download project
