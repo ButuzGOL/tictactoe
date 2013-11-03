@@ -85,16 +85,24 @@ $(function() {
 
     turnTeam = 0;
 
-    if (data.winner === team) {
-      message = '<span class="good">You win!</span>';
-    } else if (data.winner === -1) {
-      message = 'Draw! -_-';
-    } else {
-      message = '<span class="bad">You lose!</span>';
-    }
+    if (data.reason === 'opponentLeaving' && data.team !== team) {
+      $info.text('');
+      $team.text('');
+      updateText($status,
+        '<span class="bad">Sorry, but your opponent left the game.' +
+        ' Try to start new game</span>');
+    } else if (data.reason === 'complete') {
+      if (data.winner === team) {
+        message = '<span class="good">You win!</span>';
+      } else if (data.winner === -1) {
+        message = 'Draw! -_-';
+      } else {
+        message = '<span class="bad">You lose!</span>';
+      }
 
-    redrawBoard(data.board);
-    updateText($info, message);
+      redrawBoard(data.board);
+      updateText($info, message);
+    }
   });
 
   $start.on('click', function(event) {
