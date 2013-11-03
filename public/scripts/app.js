@@ -19,21 +19,21 @@ $(function() {
         styleClass,
         symbol;
 
-    for(var i = 0; i < board.length; i++) {
+    for(var x = 0; x < board.length; x++) {
       html += '<tr>';
-      for(var j = 0; j < board.length; j++) {
+      for(var y = 0; y < board.length; y++) {
         styleClass = '';
         symbol = '';
 
-        if (board[i][j] === CROSS) {
+        if (board[x][y] === CROSS) {
           styleClass = 'cross';
           symbol = 'X';
-        } else if (board[i][j] === NOUGHT) {
+        } else if (board[x][y] === NOUGHT) {
           styleClass = 'nought';
           symbol = 'O';
         }
 
-        html += '<td --data-x="' + i + '" --data-y="' + j + '" ' +
+        html += '<td --data-x="' + x + '" --data-y="' + y + '" ' +
           'class="' + styleClass + '">' +
             symbol +
           '</td>';
@@ -78,6 +78,23 @@ $(function() {
     
     updateText($team, 'You are playing for ' + ((team === CROSS) ? 'X' : 'O'));
     updateText($status, 'Game started');
+  });
+
+  socket.on('gameFinished', function(data) {
+    var message;
+
+    turnTeam = 0;
+
+    if (data.winner === team) {
+      message = '<span class="good">You win!</span>';
+    } else if (data.winner === -1) {
+      message = 'Draw! -_-';
+    } else {
+      message = '<span class="bad">You lose!</span>';
+    }
+
+    redrawBoard(data.board);
+    updateText($info, message);
   });
 
   $start.on('click', function(event) {
