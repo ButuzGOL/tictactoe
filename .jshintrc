@@ -18,8 +18,5 @@
   "trailing": true,
   "smarttabs": true,
   "predef": [
-    "app",
-    "io",
-    "$"
   ]
 }

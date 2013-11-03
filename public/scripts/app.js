@@ -1,3 +1,5 @@
+/* global $, io */
+
 $(function() {
   var socket = io.connect('localhost'),
       team = 0,
