@@ -1,7 +1,7 @@
 /* global $, io */
 
 $(function() {
-  var socket = io.connect('localhost'),
+  var socket = io.connect(window.location.hostname),
       team = 0,
       turnTeam = 0,
       CROSS = 1,
