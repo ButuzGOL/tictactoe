@@ -47,7 +47,7 @@ a {
 }
 
 #board table td.cross {
-  color: yellow;
+  color: orange;
 }
 
 #board table td.nought {

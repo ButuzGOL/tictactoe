@@ -21,11 +21,13 @@ server.listen(port, function() {
 expressServer.use('/', express.static('./public'));
 
 io.sockets.on('connection', function(socket) {
-  var actionFunction = function(data) {
-    listeners[actionName](socket, data);
-  };
+  var listen = function(actionName) {
+        socket.on(actionName, function(data) {
+          listeners[actionName](socket, data);
+        });
+      };
 
   for(var actionName in listeners) {
-    socket.on(actionName, actionFunction);
+    listen(actionName);
   }
 });
