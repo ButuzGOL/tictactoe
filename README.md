@@ -1,4 +1,4 @@
-# Tic tac toe
+# Tic tac toe [![Build Status](https://travis-ci.org/ButuzGOL/tictactoe.png?branch=master)](https://travis-ci.org/ButuzGOL/tictactoe)
 
 It is simple multiplayer game written in JavaScript using express and socket.io
 
